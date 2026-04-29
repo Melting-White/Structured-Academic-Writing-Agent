@@ -1,0 +1,125 @@
+name: structured_academic_writing_agent
+description: >
+  A logic-driven academic writing skill that generates structurally sound,
+  philosophically grounded research content through formal reasoning,
+  consistency validation, and iterative refinement.
+
+version: 1.0
+
+inputs:
+  topic:
+    type: string
+    description: Research topic or question
+  domain:
+    type: string
+    description: Academic domain (e.g., AI, philosophy, economics)
+    required: false
+  depth:
+    type: string
+    description: Level of theoretical depth (basic | advanced | philosophical)
+    default: advanced
+
+outputs:
+  paper_draft:
+    type: string
+    description: Generated academic text
+  reasoning_trace:
+    type: object
+    description: Structured representation of argumentation process
+
+workflow:
+
+  - step: problem_formalization
+    description: >
+      Transform the input topic into a structured representation.
+    operations:
+      - extract_variables
+      - define_constraints
+      - identify_hidden_assumptions
+      - apply_ontological_modeling
+    output: formal_structure
+
+  - step: argument_construction
+    description: >
+      Build logical argument structures using formal reasoning systems.
+    operations:
+      - generate_premise_set
+      - define_inference_rules
+      - apply_deductive_reasoning
+      - explore_abductive_paths
+      - construct_proposition_graph
+    output: argument_graph
+
+  - step: meta_theoretical_alignment
+    description: >
+      Inject philosophical constraints at the meta-level.
+    operations:
+      - apply_epistemological_constraints
+      - validate_methodological_assumptions
+      - enforce_theoretical_coherence
+    output: aligned_arguments
+
+  - step: global_consistency_check
+    description: >
+      Perform system-wide validation of logical and semantic consistency.
+    operations:
+      - check_logical_satisfiability
+      - enforce_definitional_closure
+      - detect_semantic_drift
+      - identify_cross_section_conflicts
+    output: validation_report
+
+  - step: structural_refinement
+    description: >
+      Refine argument structure based on detected issues.
+    condition: validation_report.has_issues == true
+    operations:
+      - locate_conflict_nodes_in_graph
+      - revise_premises_or_inference_paths
+      - reconstruct_argument_segments
+    loop_to: global_consistency_check
+
+  - step: discourse_planning
+    description: >
+      Map structured arguments into academic discourse format.
+    operations:
+      - organize_sections (introduction, method, discussion)
+      - ensure_argument_flow
+      - preserve_traceability
+    output: discourse_structure
+
+  - step: natural_language_realization
+    description: >
+      Convert structured discourse into academic writing.
+    operations:
+      - generate_formal_academic_tone
+      - maintain_logical_explicitness
+      - align_with_domain_conventions
+    output: paper_draft
+
+  - step: trace_export
+    description: >
+      Export reasoning trace for transparency and verification.
+    operations:
+      - serialize_proposition_graph
+      - summarize_inference_paths
+    output: reasoning_trace
+
+execution:
+  mode: staged
+  max_refinement_cycles: 3
+  validation_required: true
+
+capabilities:
+  - formal_reasoning
+  - philosophical_integration
+  - argument_structuring
+  - consistency_validation
+  - iterative_refinement
+
+tags:
+  - academic-writing
+  - logic
+  - philosophy
+  - research
+  - ai-agent
